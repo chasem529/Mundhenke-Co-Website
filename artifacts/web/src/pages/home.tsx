@@ -1,8 +1,43 @@
-import { Link } from "wouter";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useToast } from "@/hooks/use-toast";
+import { useSubmitContact, ApiError } from "@workspace/api-client-react";
+
+const BUSINESS_TYPES = [
+  "Contractor / Trades",
+  "Salon / Spa / Barber",
+  "Landscaping / Lawn Care",
+  "Cleaning Service",
+  "Auto / Detailing",
+  "Studio / Practitioner",
+  "Consulting / Professional Services",
+  "Other Service Business",
+];
+
+const PROJECT_TYPES = [
+  { value: "website", label: "A new website" },
+  { value: "dashboard", label: "An internal dashboard or tool" },
+  { value: "both", label: "Both — website and back-office tool" },
+  { value: "maintenance", label: "Take over an existing site" },
+  { value: "not-sure", label: "Not sure yet — let's talk" },
+];
+
+function scrollToContact() {
+  const el = document.getElementById("contact");
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -24,7 +59,11 @@ export default function Home() {
           <a href="#care" className="hover:text-white transition-colors">Care</a>
           <a href="#contact" className="hover:text-white transition-colors">Contact</a>
         </div>
-        <Button variant="outline" className="metallic-border rounded-full px-6 bg-transparent text-white hover:bg-white hover:text-black transition-all">
+        <Button
+          variant="outline"
+          onClick={scrollToContact}
+          className="metallic-border rounded-full px-6 bg-transparent text-white hover:bg-white hover:text-black transition-all"
+        >
           Inquire
         </Button>
       </nav>
@@ -178,19 +217,25 @@ export default function Home() {
       </section>
 
       {/* Contact / CTA */}
-      <section id="contact" className="py-40 px-6 text-center relative">
-        <AnimatedSection className="max-w-2xl mx-auto">
-          <h2 className="text-5xl md:text-7xl font-serif mb-8">Tell us about your business.</h2>
-          <p className="text-xl text-muted-foreground mb-12 font-sans">
-            Whether you run a two-truck operation or a shop with twenty hands on staff, we'd like to hear how you work. We take on a small number of new clients each quarter so we can give each one our full attention.
-          </p>
-          <Button size="lg" className="rounded-none bg-white text-black hover:bg-gray-200 px-12 py-6 text-sm tracking-widest uppercase transition-all duration-300">
-            Start a Conversation
-          </Button>
-          <p className="mt-8 text-xs text-muted-foreground tracking-widest uppercase">
-            Or email directly at hello@mundhenke.com
-          </p>
-        </AnimatedSection>
+      <section id="contact" className="py-32 px-6 md:px-20 relative border-t border-border/40">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-12 gap-16">
+          <AnimatedSection className="md:col-span-5">
+            <h2 className="text-4xl md:text-5xl font-serif mb-6 leading-tight">
+              Tell us about <br />
+              <span className="text-silver-gradient italic">your business.</span>
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-8">
+              Whether you run a two-truck operation or a shop with twenty hands on staff, we'd like to hear how you work. We take on a small number of new clients each quarter so each one gets our full attention.
+            </p>
+            <p className="text-xs text-muted-foreground tracking-widest uppercase">
+              Or email directly at hello@mundhenke.com
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.2} className="md:col-span-7">
+            <ContactForm />
+          </AnimatedSection>
+        </div>
       </section>
 
       {/* Footer */}
@@ -203,5 +248,188 @@ export default function Home() {
         </div>
       </footer>
     </div>
+  );
+}
+
+function ContactForm() {
+  const { toast } = useToast();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [business, setBusiness] = useState("");
+  const [businessType, setBusinessType] = useState("");
+  const [projectType, setProjectType] = useState("");
+  const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const { mutate, isPending } = useSubmitContact({
+    mutation: {
+      onSuccess: () => {
+        setSubmitted(true);
+        toast({
+          title: "Message received.",
+          description: "We'll be in touch within a business day.",
+        });
+        setName("");
+        setEmail("");
+        setBusiness("");
+        setBusinessType("");
+        setProjectType("");
+        setMessage("");
+      },
+      onError: (err) => {
+        const description =
+          err instanceof ApiError && err.data && typeof err.data === "object" && "message" in err.data
+            ? String((err.data as { message?: unknown }).message)
+            : "Please try again, or email hello@mundhenke.com directly.";
+        toast({
+          variant: "destructive",
+          title: "Something went wrong.",
+          description,
+        });
+      },
+    },
+  });
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    mutate({
+      data: {
+        name: name.trim(),
+        email: email.trim(),
+        business: business.trim() || null,
+        businessType: businessType || null,
+        projectType: projectType || null,
+        message: message.trim(),
+      },
+    });
+  }
+
+  if (submitted) {
+    return (
+      <div className="rounded-sm metallic-border p-10 bg-secondary/20 text-center">
+        <h3 className="font-serif text-2xl mb-4 text-silver-gradient">
+          Thank you.
+        </h3>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          We've received your note and will reply personally within one business day.
+        </p>
+        <Button
+          variant="outline"
+          onClick={() => setSubmitted(false)}
+          className="rounded-full text-xs tracking-widest uppercase"
+        >
+          Send Another
+        </Button>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="grid gap-5">
+      <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid gap-2">
+          <Label htmlFor="contact-name" className="text-xs tracking-widest uppercase text-muted-foreground">
+            Your Name
+          </Label>
+          <Input
+            id="contact-name"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Jane Doe"
+            className="bg-secondary/30 border-border/60 h-11 rounded-sm"
+          />
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="contact-email" className="text-xs tracking-widest uppercase text-muted-foreground">
+            Email
+          </Label>
+          <Input
+            id="contact-email"
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="you@business.com"
+            className="bg-secondary/30 border-border/60 h-11 rounded-sm"
+          />
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid gap-2">
+          <Label htmlFor="contact-business" className="text-xs tracking-widest uppercase text-muted-foreground">
+            Business Name
+          </Label>
+          <Input
+            id="contact-business"
+            value={business}
+            onChange={(e) => setBusiness(e.target.value)}
+            placeholder="Doe Plumbing Co."
+            className="bg-secondary/30 border-border/60 h-11 rounded-sm"
+          />
+        </div>
+        <div className="grid gap-2">
+          <Label className="text-xs tracking-widest uppercase text-muted-foreground">
+            What Do You Do?
+          </Label>
+          <Select value={businessType} onValueChange={setBusinessType}>
+            <SelectTrigger className="bg-secondary/30 border-border/60 h-11 rounded-sm">
+              <SelectValue placeholder="Select your trade" />
+            </SelectTrigger>
+            <SelectContent>
+              {BUSINESS_TYPES.map((t) => (
+                <SelectItem key={t} value={t}>
+                  {t}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+
+      <div className="grid gap-2">
+        <Label className="text-xs tracking-widest uppercase text-muted-foreground">
+          What Are You Looking For?
+        </Label>
+        <Select value={projectType} onValueChange={setProjectType}>
+          <SelectTrigger className="bg-secondary/30 border-border/60 h-11 rounded-sm">
+            <SelectValue placeholder="Select a project type" />
+          </SelectTrigger>
+          <SelectContent>
+            {PROJECT_TYPES.map((t) => (
+              <SelectItem key={t.value} value={t.value}>
+                {t.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
+      <div className="grid gap-2">
+        <Label htmlFor="contact-message" className="text-xs tracking-widest uppercase text-muted-foreground">
+          Tell Us More
+        </Label>
+        <Textarea
+          id="contact-message"
+          required
+          minLength={10}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="A bit about your business, what's working, what isn't, and what you'd like to have."
+          rows={6}
+          className="bg-secondary/30 border-border/60 rounded-sm resize-none"
+        />
+      </div>
+
+      <Button
+        type="submit"
+        size="lg"
+        disabled={isPending}
+        className="rounded-none bg-foreground text-background hover:bg-foreground/90 px-12 py-6 text-sm tracking-widest uppercase transition-all duration-300 mt-2 justify-self-start disabled:opacity-60"
+      >
+        {isPending ? "Sending…" : "Start a Conversation"}
+      </Button>
+    </form>
   );
 }
