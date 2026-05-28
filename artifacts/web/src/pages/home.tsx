@@ -99,7 +99,7 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-serif mb-4">Websites That Win Work</h3>
               <p className="text-muted-foreground leading-relaxed">
-                The first thing a prospective client sees when they search your name. Fast, mobile-first sites with clear service pages, real photos of your work, online booking or quote requests, and the trust signals that turn a search into a phone call.
+                The first thing a prospective client sees when they search your name. Fast, well-built sites with clear service pages, real photos of your work, online booking or quote requests, and the trust signals that turn a search into a phone call.
               </p>
             </AnimatedSection>
           </div>
