@@ -9,9 +9,8 @@ export default function Home() {
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
 
-  // Set dark mode by default for this sophisticated look
   useEffect(() => {
-    document.documentElement.classList.add("dark");
+    document.documentElement.classList.remove("dark");
   }, []);
 
   return (
@@ -40,7 +39,7 @@ export default function Home() {
           <img 
             src="/hero-texture.png" 
             alt="Silver metallic texture" 
-            className="w-full h-full object-cover opacity-40 mix-blend-screen"
+            className="w-full h-full object-cover opacity-25 mix-blend-screen"
           />
         </motion.div>
 
@@ -147,19 +146,19 @@ export default function Home() {
       </section>
 
       {/* Maintenance / Care */}
-      <section id="care" className="py-32 px-6 md:px-20 bg-black text-white relative">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      <section id="care" className="py-32 px-6 md:px-20 bg-secondary/40 text-foreground relative">
+        <div className="absolute inset-0 opacity-5 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
           <AnimatedSection>
             <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">
               We don't disappear after launch.
             </h2>
-            <p className="text-lg text-white/60 mb-8 leading-relaxed">
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               You shouldn't have to chase a developer every time a price changes, a new service gets added, or something breaks on a Sunday. We stay on as your ongoing tech partner — handling updates, hosting, security, and the small fixes that quietly add up.
             </p>
             <ul className="space-y-4">
               {['Hosting, Backups & Security Handled', 'Seasonal Updates & New Service Pages', 'Booking & Form Reliability Checks', 'A Real Person Who Answers When You Call'].map((item) => (
-                <li key={item} className="flex items-center gap-4 text-sm tracking-wide text-white/80">
+                <li key={item} className="flex items-center gap-4 text-sm tracking-wide text-foreground/80">
                   <div className="w-1.5 h-1.5 rounded-full bg-silver-gradient" />
                   {item}
                 </li>
@@ -167,10 +166,10 @@ export default function Home() {
             </ul>
           </AnimatedSection>
           <AnimatedSection delay={0.3}>
-            <div className="aspect-square rounded-full border-[0.5px] border-white/10 flex items-center justify-center p-8 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent rounded-full" />
-              <div className="w-full h-full rounded-full border border-white/20 flex items-center justify-center animate-[spin_60s_linear_infinite]">
-                <div className="w-3/4 h-3/4 rounded-full border border-white/30 flex items-center justify-center border-dashed" />
+            <div className="aspect-square rounded-full border-[0.5px] border-foreground/10 flex items-center justify-center p-8 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-tr from-foreground/[0.03] to-transparent rounded-full" />
+              <div className="w-full h-full rounded-full border border-foreground/20 flex items-center justify-center animate-[spin_60s_linear_infinite]">
+                <div className="w-3/4 h-3/4 rounded-full border border-foreground/30 flex items-center justify-center border-dashed" />
               </div>
               <div className="absolute font-serif text-2xl text-silver-gradient italic">Continuous Care</div>
             </div>
