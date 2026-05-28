@@ -51,8 +51,8 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.2 }}
             className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.1] mb-8"
           >
-            Digital tools <br />
-            <span className="text-silver-gradient italic">crafted quietly.</span>
+            Built for the people <br />
+            <span className="text-silver-gradient italic">who do the work.</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -60,7 +60,7 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.6 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl font-sans leading-relaxed"
           >
-            We design, build, and maintain personalized dashboards and websites for small businesses and individuals. You focus on your work; we keep the engine running.
+            Custom websites and dashboards for service-based businesses — contractors, salons, landscapers, cleaners, studios, and the small firms that quietly keep a town running. You stay on the job. We keep the rest in order.
           </motion.p>
         </div>
       </section>
@@ -70,7 +70,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <AnimatedSection>
             <h2 className="text-3xl md:text-5xl font-serif mb-16 max-w-3xl">
-              Software shouldn't feel like a compromise. We build exactly what you need, nothing you don't.
+              Your trade deserves better than a template. We build the website and back-office tools your service business actually needs — nothing it doesn't.
             </h2>
           </AnimatedSection>
 
@@ -83,9 +83,9 @@ export default function Home() {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
-              <h3 className="text-2xl font-serif mb-4">Personalized Dashboards</h3>
+              <h3 className="text-2xl font-serif mb-4">Operations Dashboards</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Internal tools that reflect how your mind actually works. CRMs, trackers, and data visualization tools designed with the care of a consumer product. No bloated features. Just your data, clear and actionable.
+                The back office your business has been running on sticky notes and spreadsheets — done properly. Job tracking, client histories, scheduling, invoices, and route lists, all in one place. Built around how your crew actually works, not how a generic SaaS thinks you should.
               </p>
             </AnimatedSection>
 
@@ -97,9 +97,9 @@ export default function Home() {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale hover:grayscale-0"
                 />
               </div>
-              <h3 className="text-2xl font-serif mb-4">Editorial Websites</h3>
+              <h3 className="text-2xl font-serif mb-4">Websites That Win Work</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Digital presences that command respect. We move past templates to build fast, distinct, and enduring websites that capture the exact nuance of your brand's quiet confidence.
+                The first thing a prospective client sees when they search your name. Fast, mobile-first sites with clear service pages, real photos of your work, online booking or quote requests, and the trust signals that turn a search into a phone call.
               </p>
             </AnimatedSection>
           </div>
@@ -112,10 +112,10 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <AnimatedSection>
             <h2 className="text-4xl md:text-6xl font-serif mb-8 text-silver-gradient">
-              Dependable by design.
+              We work like you do.
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed font-serif italic mb-12">
-              "We believe a digital tool should feel like a well-made watch—intricate on the inside, effortlessly simple on the outside, and built to outlast trends."
+              "Show up on time. Do honest work. Stand behind it. The kind of service business owners we build for already operate this way — our job is to give their digital side the same standard."
             </p>
           </AnimatedSection>
         </div>
@@ -132,9 +132,9 @@ export default function Home() {
           </div>
           <div className="md:col-span-8 grid gap-12">
             {[
-              { num: "01", title: "Discovery & Blueprint", desc: "We sit down to understand the exact friction points in your current workflow or presence. We return with a precise architectural blueprint." },
-              { num: "02", title: "Design & Refinement", desc: "Every screen is designed with a focus on typography, spacing, and restraint. We iterate until the tool feels like an extension of your own taste." },
-              { num: "03", title: "Development & Polish", desc: "We write clean, performant code. Interactions are smoothed out, edge cases are handled, and the interface is tested rigorously." }
+              { num: "01", title: "Ride-Along", desc: "We start by understanding how your business actually runs day to day — the calls, the quotes, the no-shows, the spreadsheets, the paperwork you keep meaning to fix. Then we map out exactly what to build." },
+              { num: "02", title: "Design & Refinement", desc: "We design pages and screens around the way you and your customers think. Booking flows, service pages, job views — drafted, shown to you, refined until it fits." },
+              { num: "03", title: "Launch & Train", desc: "We build it properly, launch it on solid hosting, and walk you and your team through it. No handover binder full of jargon. Just a working tool and a real person to call." }
             ].map((step, i) => (
               <AnimatedSection key={step.num} delay={i * 0.1} className="relative pl-12 border-l border-white/10 group hover:border-white/40 transition-colors">
                 <span className="absolute left-0 top-0 -translate-x-1/2 bg-background text-xs px-2 text-white/40 group-hover:text-white transition-colors">{step.num}</span>
@@ -152,13 +152,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
           <AnimatedSection>
             <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">
-              A studio that stays.
+              We don't disappear after launch.
             </h2>
             <p className="text-lg text-white/60 mb-8 leading-relaxed">
-              Launching is only the beginning. We don't hand over the keys and disappear. We act as your ongoing technical partner—handling updates, security, scaling, and the inevitable small tweaks.
+              You shouldn't have to chase a developer every time a price changes, a new service gets added, or something breaks on a Sunday. We stay on as your ongoing tech partner — handling updates, hosting, security, and the small fixes that quietly add up.
             </p>
             <ul className="space-y-4">
-              {['Proactive Security Monitoring', 'Performance Optimization', 'Content & Feature Updates', 'Direct Line to the Founders'].map((item) => (
+              {['Hosting, Backups & Security Handled', 'Seasonal Updates & New Service Pages', 'Booking & Form Reliability Checks', 'A Real Person Who Answers When You Call'].map((item) => (
                 <li key={item} className="flex items-center gap-4 text-sm tracking-wide text-white/80">
                   <div className="w-1.5 h-1.5 rounded-full bg-silver-gradient" />
                   {item}
@@ -181,9 +181,9 @@ export default function Home() {
       {/* Contact / CTA */}
       <section id="contact" className="py-40 px-6 text-center relative">
         <AnimatedSection className="max-w-2xl mx-auto">
-          <h2 className="text-5xl md:text-7xl font-serif mb-8">Ready to begin?</h2>
+          <h2 className="text-5xl md:text-7xl font-serif mb-8">Tell us about your business.</h2>
           <p className="text-xl text-muted-foreground mb-12 font-sans">
-            We take on a limited number of clients per quarter to ensure uncompromising quality. Let's discuss what you need built.
+            Whether you run a two-truck operation or a shop with twenty hands on staff, we'd like to hear how you work. We take on a small number of new clients each quarter so we can give each one our full attention.
           </p>
           <Button size="lg" className="rounded-none bg-white text-black hover:bg-gray-200 px-12 py-6 text-sm tracking-widest uppercase transition-all duration-300">
             Start a Conversation
