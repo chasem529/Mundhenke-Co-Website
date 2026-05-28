@@ -5,9 +5,7 @@ import { logger } from "./logger";
 
 const connectors = new ReplitConnectors();
 
-// Replace with a verified domain sender (e.g. "hello@mundhenke.co") once
-// the domain is verified in the Resend dashboard.
-const DEFAULT_FROM = "Mundhenke Inquiries <onboarding@resend.dev>";
+const DEFAULT_FROM = "Mundhenke Inquiries <inquiries@mundhenke.co>";
 const INQUIRY_RECIPIENT = "chase@mundhenke.co";
 
 interface ContactNotificationPayload {
