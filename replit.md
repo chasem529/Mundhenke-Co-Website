@@ -1,6 +1,6 @@
-# [Project name]
+# Mundhenke Company
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Customer-facing marketing website for Mundhenke Company — a studio that designs, builds, and maintains personalized dashboards and websites for small businesses and individuals. Black, white, and silver palette.
 
 ## Run & Operate
 

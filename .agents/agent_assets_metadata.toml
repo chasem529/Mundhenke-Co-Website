@@ -1,0 +1,20 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "kTIXxVDL7oIN-O9O5u78P"
+uri = "file://artifacts/web/public/hero-texture.png"
+type = "image"
+title = "Abstract silver metallic texture"
+
+[[generated]]
+id = "ltgWHpf__H86_VJwqDpBN"
+uri = "file://artifacts/web/public/dashboard-mockup.png"
+type = "image"
+title = "Dashboard UI mockup"
+
+[[generated]]
+id = "XJEcjXPe046510hOWMTD-"
+uri = "file://artifacts/web/public/workspace.png"
+type = "image"
+title = "Modern design studio workspace"
