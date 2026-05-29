@@ -456,9 +456,27 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-8 px-6 md:px-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-widest text-muted-foreground uppercase">
         <div>© {new Date().getFullYear()} Mundhenke Company. All rights reserved.</div>
-        <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white transition-colors normal-case tracking-normal">
-          {CONTACT_EMAIL}
-        </a>
+        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
+          <a
+            href="https://x.com/mundhenkeco"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors"
+          >
+            X
+          </a>
+          <a
+            href="https://instagram.com/mundhenkeco"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors"
+          >
+            Instagram
+          </a>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white transition-colors normal-case tracking-normal">
+            {CONTACT_EMAIL}
+          </a>
+        </div>
       </footer>
     </div>
   );
