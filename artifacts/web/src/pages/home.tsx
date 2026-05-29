@@ -138,7 +138,7 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground overflow-hidden selection:bg-silver-gradient selection:text-black">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex justify-between items-center mix-blend-difference">
-        <div className="font-serif text-xl tracking-tight text-white">Mundhenke</div>
+        <div className="font-serif text-xl tracking-tight text-white">MundhenkeCo</div>
         <div className="hidden md:flex gap-8 text-sm uppercase tracking-widest text-white/70">
           <a href="#work" className="hover:text-white transition-colors">Work</a>
           <a href="#results" className="hover:text-white transition-colors">Results</a>
