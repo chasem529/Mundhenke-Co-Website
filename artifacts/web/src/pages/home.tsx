@@ -12,8 +12,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { useToast } from "@/hooks/use-toast";
 import { useSubmitContact, ApiError } from "@workspace/api-client-react";
+
+const CONTACT_EMAIL = "chase@mundhenke.co";
 
 const BUSINESS_TYPES = [
   "Contractor / Trades",
@@ -32,6 +40,84 @@ const PROJECT_TYPES = [
   { value: "both", label: "Both — website and back-office tool" },
   { value: "maintenance", label: "Take over an existing site" },
   { value: "not-sure", label: "Not sure yet — let's talk" },
+];
+
+// Credibility numbers shown in the strip under the hero.
+// EDIT THESE to match your real figures as your business grows.
+const STATS = [
+  { value: "100%", label: "Custom-built — never a template" },
+  { value: "1 day", label: "Typical reply to a new inquiry" },
+  { value: "Ongoing", label: "Care & support after launch" },
+  { value: "Local", label: "Built for service businesses" },
+];
+
+// PLACEHOLDER testimonials — replace the name, business, and quote with
+// real client words before relying on these. Honest social proof only.
+const TESTIMONIALS = [
+  {
+    quote:
+      "I used to run everything off a whiteboard and my phone. Now my whole schedule, my quotes, and my customer list live in one place I can actually trust.",
+    name: "Client Name",
+    business: "Business Name, City",
+  },
+  {
+    quote:
+      "The new site finally looks like the quality of work we put out. We started getting quote requests through it the first week it went live.",
+    name: "Client Name",
+    business: "Business Name, City",
+  },
+  {
+    quote:
+      "What I appreciate most is that when something needs changing, I just send a text and it's handled. I'm not chasing anyone.",
+    name: "Client Name",
+    business: "Business Name, City",
+  },
+];
+
+// PLACEHOLDER case studies — replace with real projects and outcomes
+// before publishing. Keep claims truthful.
+const CASE_STUDIES = [
+  {
+    tag: "Landscaping",
+    title: "From shoebox of invoices to one clean dashboard",
+    result: "Hours of weekly paperwork replaced with a few clicks.",
+    desc: "Built a job-tracking and invoicing tool tailored to a seasonal crew — so quotes, schedules, and billing all live in one place.",
+  },
+  {
+    tag: "Trades",
+    title: "A website that turns searches into phone calls",
+    result: "A clear, fast site with real photos and easy quote requests.",
+    desc: "Replaced an outdated, slow page with a modern site built around the services that actually bring in work.",
+  },
+  {
+    tag: "Salon",
+    title: "Online booking that fills the slow days",
+    result: "Clients book themselves — fewer phone tag, fewer empty chairs.",
+    desc: "Added simple online booking and a polished service menu, freeing up the front desk and filling gaps in the calendar.",
+  },
+];
+
+const FAQS = [
+  {
+    q: "What does a project cost?",
+    a: "Every business is different, so we price per project after we understand what you actually need — no bloated packages for features you'll never use. After a short conversation we give you a clear, fixed quote up front, so there are no surprises.",
+  },
+  {
+    q: "How long does it take?",
+    a: "Most websites take a few weeks from kickoff to launch; dashboards and custom tools depend on complexity. We map out a realistic timeline at the start and keep you updated the whole way through.",
+  },
+  {
+    q: "Do I need to be technical?",
+    a: "Not at all — that's the whole point. You stay focused on running your business. We handle the technical side, explain things in plain language, and train you on anything you'll touch day to day.",
+  },
+  {
+    q: "What happens after launch?",
+    a: "We don't disappear. We stay on as your ongoing tech partner — handling hosting, security, backups, seasonal updates, and the small fixes that come up — so you always have a real person to call.",
+  },
+  {
+    q: "Can you take over a site someone else built?",
+    a: "Often, yes. We'll review what you have, tell you honestly whether it's worth keeping or rebuilding, and take care of the migration either way.",
+  },
 ];
 
 function scrollToContact() {
@@ -55,8 +141,9 @@ export default function Home() {
         <div className="font-serif text-xl tracking-tight text-white">Mundhenke</div>
         <div className="hidden md:flex gap-8 text-sm uppercase tracking-widest text-white/70">
           <a href="#work" className="hover:text-white transition-colors">Work</a>
+          <a href="#results" className="hover:text-white transition-colors">Results</a>
           <a href="#process" className="hover:text-white transition-colors">Process</a>
-          <a href="#care" className="hover:text-white transition-colors">Care</a>
+          <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
           <a href="#contact" className="hover:text-white transition-colors">Contact</a>
         </div>
         <Button
@@ -100,6 +187,47 @@ export default function Home() {
           >
             Custom websites and dashboards for service-based businesses — contractors, salons, landscapers, cleaners, studios, and the small firms that quietly keep a town running. You stay on the job. We keep the rest in order.
           </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.9 }}
+            className="mt-10 flex flex-col sm:flex-row gap-4"
+          >
+            <Button
+              size="lg"
+              onClick={scrollToContact}
+              className="rounded-full bg-foreground text-background hover:bg-foreground/90 px-8 py-6 text-sm tracking-widest uppercase transition-all"
+            >
+              Start Your Project
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => {
+                const el = document.getElementById("work");
+                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+              className="metallic-border rounded-full bg-transparent px-8 py-6 text-sm tracking-widest uppercase hover:bg-white hover:text-black transition-all"
+            >
+              See What We Build
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Credibility strip */}
+      <section className="border-y border-white/5 bg-secondary/10">
+        <div className="max-w-7xl mx-auto px-6 md:px-20 grid grid-cols-2 md:grid-cols-4 divide-x divide-white/5">
+          {STATS.map((stat) => (
+            <div key={stat.label} className="py-10 px-4 text-center">
+              <div className="font-serif text-3xl md:text-4xl text-silver-gradient mb-2">
+                {stat.value}
+              </div>
+              <div className="text-xs uppercase tracking-widest text-muted-foreground leading-relaxed">
+                {stat.label}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -140,6 +268,62 @@ export default function Home() {
                 The first thing a prospective client sees when they search your name. Fast, well-built sites with clear service pages, real photos of your work, online booking or quote requests, and the trust signals that turn a search into a phone call.
               </p>
             </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* Case Studies / Proof */}
+      <section id="results" className="py-32 px-6 md:px-20 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <AnimatedSection>
+            <p className="text-muted-foreground text-sm uppercase tracking-widest mb-4">Real Outcomes</p>
+            <h2 className="text-3xl md:text-5xl font-serif mb-16 max-w-3xl">
+              The point isn't a prettier screen. It's more booked jobs, fewer dropped balls, and hours handed back to you.
+            </h2>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
+            {CASE_STUDIES.map((study, i) => (
+              <AnimatedSection
+                key={study.title}
+                delay={i * 0.1}
+                className="metallic-border rounded-sm p-8 bg-secondary/10 hover-metallic-glow flex flex-col"
+              >
+                <span className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
+                  {study.tag}
+                </span>
+                <h3 className="text-xl font-serif mb-4 leading-snug">{study.title}</h3>
+                <p className="text-silver-gradient font-serif italic mb-4">{study.result}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed mt-auto">{study.desc}</p>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-32 px-6 md:px-20 bg-secondary/20 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <AnimatedSection>
+            <h2 className="text-3xl md:text-5xl font-serif mb-16 text-center">
+              What owners <span className="text-silver-gradient italic">say.</span>
+            </h2>
+          </AnimatedSection>
+          <div className="grid md:grid-cols-3 gap-8">
+            {TESTIMONIALS.map((t, i) => (
+              <AnimatedSection
+                key={i}
+                delay={i * 0.1}
+                className="rounded-sm metallic-border p-8 bg-background/40 flex flex-col"
+              >
+                <div className="text-silver-gradient font-serif text-5xl leading-none mb-4">"</div>
+                <p className="text-foreground/90 leading-relaxed mb-8 flex-1">{t.quote}</p>
+                <div>
+                  <div className="font-serif text-lg">{t.name}</div>
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{t.business}</div>
+                </div>
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>
@@ -216,6 +400,34 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section id="faq" className="py-32 px-6 md:px-20 border-t border-white/5">
+        <div className="max-w-3xl mx-auto">
+          <AnimatedSection>
+            <h2 className="text-3xl md:text-5xl font-serif mb-4 text-center">
+              Questions, answered.
+            </h2>
+            <p className="text-muted-foreground text-center mb-16 leading-relaxed">
+              The things owners ask us most — before the first call.
+            </p>
+          </AnimatedSection>
+          <AnimatedSection delay={0.1}>
+            <Accordion type="single" collapsible className="w-full">
+              {FAQS.map((faq, i) => (
+                <AccordionItem key={i} value={`item-${i}`} className="border-white/10">
+                  <AccordionTrigger className="text-left font-serif text-lg hover:no-underline hover:text-silver-gradient py-6">
+                    {faq.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed text-base">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* Contact / CTA */}
       <section id="contact" className="py-32 px-6 md:px-20 relative border-t border-border/40">
         <div className="max-w-5xl mx-auto grid md:grid-cols-12 gap-16">
@@ -228,7 +440,10 @@ export default function Home() {
               Whether you run a two-truck operation or a shop with twenty hands on staff, we'd like to hear how you work. We take on a small number of new clients each quarter so each one gets our full attention.
             </p>
             <p className="text-xs text-muted-foreground tracking-widest uppercase">
-              Or email directly at hello@mundhenke.com
+              Or email directly at{" "}
+              <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white transition-colors">
+                {CONTACT_EMAIL}
+              </a>
             </p>
           </AnimatedSection>
 
@@ -241,11 +456,9 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-8 px-6 md:px-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-widest text-muted-foreground uppercase">
         <div>© {new Date().getFullYear()} Mundhenke Company. All rights reserved.</div>
-        <div className="flex gap-8">
-          <a href="#" className="hover:text-white transition-colors">Twitter</a>
-          <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
-          <a href="#" className="hover:text-white transition-colors">Instagram</a>
-        </div>
+        <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white transition-colors normal-case tracking-normal">
+          {CONTACT_EMAIL}
+        </a>
       </footer>
     </div>
   );
@@ -280,7 +493,7 @@ function ContactForm() {
         const description =
           err instanceof ApiError && err.data && typeof err.data === "object" && "message" in err.data
             ? String((err.data as { message?: unknown }).message)
-            : "Please try again, or email hello@mundhenke.com directly.";
+            : `Please try again, or email ${CONTACT_EMAIL} directly.`;
         toast({
           variant: "destructive",
           title: "Something went wrong.",
