@@ -115,6 +115,8 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  /* Extend the painted box so glyph descenders (g, y, p) aren't clipped */
+  padding-bottom: 0.18em;
 }
 
 .metallic-border {
