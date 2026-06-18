@@ -51,30 +51,6 @@ const STATS = [
   { value: "Local", label: "Built for service businesses" },
 ];
 
-// PLACEHOLDER testimonials — names and businesses below are fictional.
-// Replace with real client quotes and attribution before relying on these.
-// Honest social proof only.
-const TESTIMONIALS = [
-  {
-    quote:
-      "I used to run everything off a whiteboard and my phone. Now my whole schedule, my quotes, and my customer list live in one place I can actually trust.",
-    name: "Marcus Delgado",
-    business: "Delgado Landscaping, Tucson",
-  },
-  {
-    quote:
-      "The new site finally looks like the quality of work we put out. We started getting quote requests through it the first week it went live.",
-    name: "Renee Okafor",
-    business: "Northline Plumbing & Heating, Columbus",
-  },
-  {
-    quote:
-      "What I appreciate most is that when something needs changing, I just send a text and it's handled. I'm not chasing anyone.",
-    name: "Jenna Whitfield",
-    business: "Studio Vale Salon, Asheville",
-  },
-];
-
 // PLACEHOLDER case studies — replace with real projects and outcomes
 // before publishing. Keep claims truthful.
 const CASE_STUDIES = [
@@ -296,33 +272,6 @@ export default function Home() {
                 <h3 className="text-xl font-serif mb-4 leading-snug">{study.title}</h3>
                 <p className="text-silver-gradient font-serif italic mb-4">{study.result}</p>
                 <p className="text-muted-foreground text-sm leading-relaxed mt-auto">{study.desc}</p>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-32 px-6 md:px-20 bg-secondary/20 border-t border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <AnimatedSection>
-            <h2 className="text-3xl md:text-5xl font-serif mb-16 text-center">
-              What owners <span className="text-silver-gradient italic">say.</span>
-            </h2>
-          </AnimatedSection>
-          <div className="grid md:grid-cols-3 gap-8">
-            {TESTIMONIALS.map((t, i) => (
-              <AnimatedSection
-                key={i}
-                delay={i * 0.1}
-                className="rounded-sm metallic-border p-8 bg-background/40 flex flex-col"
-              >
-                <div className="text-silver-gradient font-serif text-5xl leading-none mb-4">"</div>
-                <p className="text-foreground/90 leading-relaxed mb-8 flex-1">{t.quote}</p>
-                <div>
-                  <div className="font-serif text-lg">{t.name}</div>
-                  <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{t.business}</div>
-                </div>
               </AnimatedSection>
             ))}
           </div>
