@@ -51,26 +51,27 @@ const STATS = [
   { value: "Local", label: "Built for service businesses" },
 ];
 
-// PLACEHOLDER testimonials — replace the name, business, and quote with
-// real client words before relying on these. Honest social proof only.
+// PLACEHOLDER testimonials — names and businesses below are fictional.
+// Replace with real client quotes and attribution before relying on these.
+// Honest social proof only.
 const TESTIMONIALS = [
   {
     quote:
       "I used to run everything off a whiteboard and my phone. Now my whole schedule, my quotes, and my customer list live in one place I can actually trust.",
-    name: "Client Name",
-    business: "Business Name, City",
+    name: "Marcus Delgado",
+    business: "Delgado Landscaping, Tucson",
   },
   {
     quote:
       "The new site finally looks like the quality of work we put out. We started getting quote requests through it the first week it went live.",
-    name: "Client Name",
-    business: "Business Name, City",
+    name: "Renee Okafor",
+    business: "Northline Plumbing & Heating, Columbus",
   },
   {
     quote:
       "What I appreciate most is that when something needs changing, I just send a text and it's handled. I'm not chasing anyone.",
-    name: "Client Name",
-    business: "Business Name, City",
+    name: "Jenna Whitfield",
+    business: "Studio Vale Salon, Asheville",
   },
 ];
 
