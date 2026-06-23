@@ -128,7 +128,7 @@ export default function Home() {
           onClick={scrollToContact}
           className="metallic-border rounded-full px-6 bg-transparent text-white hover:bg-white hover:text-black transition-all"
         >
-          Inquire
+          Book a Consultation
         </Button>
       </nav>
 
@@ -175,7 +175,7 @@ export default function Home() {
               onClick={scrollToContact}
               className="rounded-full bg-foreground text-background hover:bg-foreground/90 px-8 py-6 text-sm tracking-widest uppercase transition-all"
             >
-              Start Your Project
+              Book a Consultation
             </Button>
             <Button
               variant="outline"
@@ -374,6 +374,29 @@ export default function Home() {
               </div>
               <div className="absolute font-serif text-2xl text-silver-gradient italic">Continuous Care</div>
             </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Booking CTA band */}
+      <section className="py-28 px-6 md:px-20 border-t border-white/5 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)]" />
+        <div className="max-w-3xl mx-auto text-center relative z-10">
+          <AnimatedSection>
+            <p className="text-muted-foreground text-sm uppercase tracking-widest mb-4">No pressure, no jargon</p>
+            <h2 className="text-3xl md:text-5xl font-serif mb-6 leading-tight">
+              Ready to see what we'd build <span className="text-silver-gradient italic">for you?</span>
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-10 max-w-xl mx-auto">
+              Book a free consultation and we'll talk through how your business runs day to day, where the friction is, and exactly what we'd build to fix it. You'll leave the call with a clear plan — whether or not we work together.
+            </p>
+            <Button
+              size="lg"
+              onClick={scrollToContact}
+              className="rounded-full bg-foreground text-background hover:bg-foreground/90 px-10 py-6 text-sm tracking-widest uppercase transition-all"
+            >
+              Book a Consultation
+            </Button>
           </AnimatedSection>
         </div>
       </section>
@@ -637,7 +660,7 @@ function ContactForm() {
         disabled={isPending}
         className="rounded-none bg-foreground text-background hover:bg-foreground/90 px-12 py-6 text-sm tracking-widest uppercase transition-all duration-300 mt-2 justify-self-start disabled:opacity-60"
       >
-        {isPending ? "Sending…" : "Start a Conversation"}
+        {isPending ? "Sending…" : "Book My Consultation"}
       </Button>
     </form>
   );
