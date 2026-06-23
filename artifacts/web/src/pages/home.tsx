@@ -283,7 +283,7 @@ export default function Home() {
           <AnimatedSection>
             <p className="text-muted-foreground text-sm uppercase tracking-widest mb-4">Real Outcomes</p>
             <h2 className="text-3xl md:text-5xl font-serif mb-16 max-w-3xl">
-              The point isn't a prettier screen. It's more booked jobs, fewer dropped balls, and hours handed back to you.
+              The point isn't a prettier screen. It's more booked jobs, nothing slipping through the cracks, and hours handed back to you.
             </h2>
           </AnimatedSection>
 
