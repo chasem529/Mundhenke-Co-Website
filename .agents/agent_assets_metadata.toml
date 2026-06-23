@@ -18,3 +18,15 @@ id = "XJEcjXPe046510hOWMTD-"
 uri = "file://artifacts/web/public/workspace.png"
 type = "image"
 title = "Modern design studio workspace"
+
+[[generated]]
+id = "ApQHkMum2Qp72uORwEMY9"
+uri = "file://artifacts/web/public/crm-mockup.png"
+type = "image"
+title = "custom crm mockup"
+
+[[generated]]
+id = "nMHfejPF9mJObi8htqM3D"
+uri = "file://artifacts/web/public/project-mgmt-mockup.png"
+type = "image"
+title = "project management mockup"

@@ -245,6 +245,34 @@ export default function Home() {
                 The first thing a prospective client sees when they search your name. Fast, well-built sites with clear service pages, real photos of your work, online booking or quote requests, and the trust signals that turn a search into a phone call.
               </p>
             </AnimatedSection>
+
+            <AnimatedSection delay={0.2} className="group cursor-pointer">
+              <div className="aspect-[4/3] rounded-sm overflow-hidden mb-8 relative metallic-border hover-metallic-glow">
+                <img 
+                  src="/crm-mockup.png" 
+                  alt="Custom CRM" 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+              <h3 className="text-2xl font-serif mb-4">Custom CRMs</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                A customer system that fits the way you actually sell — not a bloated platform you pay for and never fully use. Track leads, quotes, follow-ups, and every conversation in one place, so nothing slips through the cracks and no good customer gets forgotten.
+              </p>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.4} className="group cursor-pointer md:mt-24">
+              <div className="aspect-[4/3] rounded-sm overflow-hidden mb-8 relative metallic-border hover-metallic-glow">
+                <img 
+                  src="/project-mgmt-mockup.png" 
+                  alt="Custom Project Management Tools" 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+              <h3 className="text-2xl font-serif mb-4">Custom Project Management Tools</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Keep every job moving from first call to final invoice. Custom boards, schedules, and checklists built around your real workflow — so your crew knows what's next, deadlines don't slip, and you can see the whole pipeline at a glance.
+              </p>
+            </AnimatedSection>
           </div>
         </div>
       </section>
