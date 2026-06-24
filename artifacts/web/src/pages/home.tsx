@@ -114,19 +114,19 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden selection:bg-silver-gradient selection:text-black">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex justify-between items-center mix-blend-difference">
-        <div className="font-serif text-xl tracking-tight text-white">MundhenkeCo</div>
-        <div className="hidden md:flex gap-8 text-sm uppercase tracking-widest text-white/70">
-          <a href="#work" className="hover:text-white transition-colors">Work</a>
-          <a href="#results" className="hover:text-white transition-colors">Results</a>
-          <a href="#process" className="hover:text-white transition-colors">Process</a>
-          <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
-          <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-4 flex justify-between items-center border-b border-white/[0.06] backdrop-blur-md bg-background/80">
+        <div className="font-serif text-xl tracking-tight">MundhenkeCo</div>
+        <div className="hidden md:flex gap-8 text-xs uppercase tracking-[0.14em] text-muted-foreground">
+          <a href="#work" className="hover:text-foreground transition-colors duration-200">Work</a>
+          <a href="#results" className="hover:text-foreground transition-colors duration-200">Results</a>
+          <a href="#process" className="hover:text-foreground transition-colors duration-200">Process</a>
+          <a href="#faq" className="hover:text-foreground transition-colors duration-200">FAQ</a>
+          <a href="#contact" className="hover:text-foreground transition-colors duration-200">Contact</a>
         </div>
         <Button
           variant="outline"
           onClick={scrollToContact}
-          className="metallic-border rounded-full px-6 bg-transparent text-white hover:bg-white hover:text-black transition-all"
+          className="rounded-full px-5 py-2 text-xs tracking-[0.12em] uppercase bg-transparent border-foreground/25 hover:bg-foreground hover:text-background transition-all duration-200"
         >
           Book a Consultation
         </Button>
@@ -146,7 +146,7 @@ export default function Home() {
           />
         </motion.div>
 
-        <div className="relative z-10 max-w-4xl mt-32">
+        <div className="relative z-10 max-w-4xl mt-20 md:mt-32">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -160,7 +160,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl font-sans leading-relaxed"
+            className="text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed"
           >
             Custom websites and dashboards for service-based businesses — contractors, salons, landscapers, cleaners, studios, and the small firms that quietly keep a town running. You stay on the job. We keep the rest in order.
           </motion.p>
@@ -173,7 +173,7 @@ export default function Home() {
             <Button
               size="lg"
               onClick={scrollToContact}
-              className="rounded-full bg-foreground text-background hover:bg-foreground/90 px-8 py-6 text-sm tracking-widest uppercase transition-all"
+              className="rounded-full bg-foreground text-background hover:bg-foreground/90 px-8 py-6 text-sm tracking-[0.12em] uppercase transition-all"
             >
               Book a Consultation
             </Button>
@@ -184,7 +184,7 @@ export default function Home() {
                 const el = document.getElementById("work");
                 if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
               }}
-              className="metallic-border rounded-full bg-transparent px-8 py-6 text-sm tracking-widest uppercase hover:bg-white hover:text-black transition-all"
+              className="metallic-border rounded-full bg-transparent px-8 py-6 text-sm tracking-[0.12em] uppercase hover:bg-foreground hover:text-background transition-all"
             >
               See What We Build
             </Button>
@@ -209,7 +209,7 @@ export default function Home() {
       </section>
 
       {/* The Work / What We Build */}
-      <section id="work" className="py-32 px-6 md:px-20 relative">
+      <section id="work" className="py-24 md:py-32 px-6 md:px-20 relative">
         <div className="max-w-7xl mx-auto">
           <AnimatedSection>
             <h2 className="text-3xl md:text-5xl font-serif mb-16 max-w-3xl">
@@ -278,7 +278,7 @@ export default function Home() {
       </section>
 
       {/* Case Studies / Proof */}
-      <section id="results" className="py-32 px-6 md:px-20 border-t border-white/5">
+      <section id="results" className="py-24 md:py-32 px-6 md:px-20 border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <AnimatedSection>
             <p className="text-muted-foreground text-sm uppercase tracking-widest mb-4">Real Outcomes</p>
@@ -307,7 +307,7 @@ export default function Home() {
       </section>
 
       {/* Philosophy / Vibe */}
-      <section className="py-32 bg-secondary/5 relative overflow-hidden">
+      <section className="py-24 md:py-32 bg-secondary/5 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)]" />
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <AnimatedSection>
@@ -322,7 +322,7 @@ export default function Home() {
       </section>
 
       {/* Process */}
-      <section id="process" className="py-32 px-6 md:px-20 border-t border-white/5">
+      <section id="process" className="py-24 md:py-32 px-6 md:px-20 border-t border-white/5">
         <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-16">
           <div className="md:col-span-4">
             <AnimatedSection>
@@ -337,7 +337,7 @@ export default function Home() {
               { num: "03", title: "Launch & Train", desc: "We build it properly, launch it on solid hosting, and walk you and your team through it. No handover binder full of jargon. Just a working tool and a real person to call." }
             ].map((step, i) => (
               <AnimatedSection key={step.num} delay={i * 0.1} className="relative pl-12 border-l border-white/10 group hover:border-white/40 transition-colors">
-                <span className="absolute left-0 top-0 -translate-x-1/2 bg-background text-xs px-2 text-white/40 group-hover:text-white transition-colors">{step.num}</span>
+                <span className="absolute left-0 top-0 -translate-x-1/2 bg-background text-xs px-2 tabular-nums text-foreground/30 group-hover:text-foreground/60 transition-colors">{step.num}</span>
                 <h3 className="text-xl font-serif mb-3">{step.title}</h3>
                 <p className="text-muted-foreground">{step.desc}</p>
               </AnimatedSection>
@@ -347,8 +347,8 @@ export default function Home() {
       </section>
 
       {/* Maintenance / Care */}
-      <section id="care" className="py-32 px-6 md:px-20 bg-secondary/40 text-foreground relative">
-        <div className="absolute inset-0 opacity-5 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      <section id="care" className="py-24 md:py-32 px-6 md:px-20 bg-secondary/40 text-foreground relative">
+        <div className="absolute inset-0 opacity-5 bg-[url('/noise.svg')]" />
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
           <AnimatedSection>
             <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">
@@ -379,7 +379,7 @@ export default function Home() {
       </section>
 
       {/* Booking CTA band */}
-      <section className="py-28 px-6 md:px-20 border-t border-white/5 relative overflow-hidden">
+      <section className="py-20 md:py-28 px-6 md:px-20 border-t border-white/5 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)]" />
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <AnimatedSection>
@@ -393,7 +393,7 @@ export default function Home() {
             <Button
               size="lg"
               onClick={scrollToContact}
-              className="rounded-full bg-foreground text-background hover:bg-foreground/90 px-10 py-6 text-sm tracking-widest uppercase transition-all"
+              className="rounded-full bg-foreground text-background hover:bg-foreground/90 px-10 py-6 text-sm tracking-[0.12em] uppercase transition-all"
             >
               Book a Consultation
             </Button>
@@ -402,7 +402,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="py-32 px-6 md:px-20 border-t border-white/5">
+      <section id="faq" className="py-24 md:py-32 px-6 md:px-20 border-t border-white/5">
         <div className="max-w-3xl mx-auto">
           <AnimatedSection>
             <h2 className="text-3xl md:text-5xl font-serif mb-4 text-center">
@@ -430,7 +430,7 @@ export default function Home() {
       </section>
 
       {/* Contact / CTA */}
-      <section id="contact" className="py-32 px-6 md:px-20 relative border-t border-border/40">
+      <section id="contact" className="py-24 md:py-32 px-6 md:px-20 relative border-t border-border/40">
         <div className="max-w-5xl mx-auto grid md:grid-cols-12 gap-16">
           <AnimatedSection className="md:col-span-5">
             <h2 className="text-4xl md:text-5xl font-serif mb-6 leading-tight">
@@ -442,7 +442,7 @@ export default function Home() {
             </p>
             <p className="text-xs text-muted-foreground tracking-widest uppercase">
               Or email directly at{" "}
-              <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white transition-colors">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-foreground transition-colors">
                 {CONTACT_EMAIL}
               </a>
             </p>
@@ -462,7 +462,7 @@ export default function Home() {
             href="https://x.com/mundhenkeco"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition-colors"
+            className="hover:text-foreground transition-colors"
           >
             X
           </a>
@@ -470,11 +470,11 @@ export default function Home() {
             href="https://instagram.com/mundhenkeco"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition-colors"
+            className="hover:text-foreground transition-colors"
           >
             Instagram
           </a>
-          <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white transition-colors normal-case tracking-normal">
+          <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-foreground transition-colors normal-case tracking-normal">
             {CONTACT_EMAIL}
           </a>
         </div>
@@ -569,7 +569,7 @@ function ContactForm() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Jane Doe"
-            className="bg-secondary/30 border-border/60 h-11 rounded-sm"
+            className="bg-secondary/20 border-border h-11 rounded-sm"
           />
         </div>
         <div className="grid gap-2">
@@ -583,7 +583,7 @@ function ContactForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@business.com"
-            className="bg-secondary/30 border-border/60 h-11 rounded-sm"
+            className="bg-secondary/20 border-border h-11 rounded-sm"
           />
         </div>
       </div>
@@ -598,7 +598,7 @@ function ContactForm() {
             value={business}
             onChange={(e) => setBusiness(e.target.value)}
             placeholder="Doe Plumbing Co."
-            className="bg-secondary/30 border-border/60 h-11 rounded-sm"
+            className="bg-secondary/20 border-border h-11 rounded-sm"
           />
         </div>
         <div className="grid gap-2">
@@ -606,7 +606,7 @@ function ContactForm() {
             What Do You Do?
           </Label>
           <Select value={businessType} onValueChange={setBusinessType}>
-            <SelectTrigger className="bg-secondary/30 border-border/60 h-11 rounded-sm">
+            <SelectTrigger className="bg-secondary/20 border-border h-11 rounded-sm">
               <SelectValue placeholder="Select your trade" />
             </SelectTrigger>
             <SelectContent>
@@ -625,7 +625,7 @@ function ContactForm() {
           What Are You Looking For?
         </Label>
         <Select value={projectType} onValueChange={setProjectType}>
-          <SelectTrigger className="bg-secondary/30 border-border/60 h-11 rounded-sm">
+          <SelectTrigger className="bg-secondary/20 border-border h-11 rounded-sm">
             <SelectValue placeholder="Select a project type" />
           </SelectTrigger>
           <SelectContent>
@@ -650,7 +650,7 @@ function ContactForm() {
           onChange={(e) => setMessage(e.target.value)}
           placeholder="A bit about your business, what's working, what isn't, and what you'd like to have."
           rows={6}
-          className="bg-secondary/30 border-border/60 rounded-sm resize-none"
+          className="bg-secondary/20 border-border rounded-sm resize-none"
         />
       </div>
 
@@ -658,7 +658,7 @@ function ContactForm() {
         type="submit"
         size="lg"
         disabled={isPending}
-        className="rounded-none bg-foreground text-background hover:bg-foreground/90 px-12 py-6 text-sm tracking-widest uppercase transition-all duration-300 mt-2 justify-self-start disabled:opacity-60"
+        className="rounded-none bg-foreground text-background hover:bg-foreground/90 px-12 py-6 text-sm tracking-[0.12em] uppercase transition-all duration-300 mt-2 justify-self-start disabled:opacity-60"
       >
         {isPending ? "Sending…" : "Book My Consultation"}
       </Button>
